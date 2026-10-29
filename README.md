@@ -3,8 +3,7 @@
 Plataforma web estática orientada a la organización y búsqueda de previas nocturnas en Buenos Aires y Argentina.
 
 ## 🚀 Sitio Desplegado
-- **URL de Vercel / Netlify:** [https://tu-proyecto.vercel.app](https://tu-proyecto.vercel.app) *(Reemplazá por tu link real de Vercel cuando lo tengas)*
-
+- **URL de Vercel / Netlify:** [https://proyecto-final-flame-eight.vercel.app](https://proyecto-final-flame-eight.vercel.app)
 ## 🛠️ Tecnologías y Características
 - **HTML5 Semántico:** Estructura completa de 5 páginas con etiquetas SEO y atributos `alt` en imágenes.
 - **SCSS Avanzado:** Arquitectura basada en partials (`@use`), variables, mixins con parámetros para media queries y uso de `@extend`.
