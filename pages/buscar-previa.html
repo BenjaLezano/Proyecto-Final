@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Local / On-Page -->
+  <title>Buscar Previas Activas | Filtra por Zona y Estilo | Previemos</title>
+  <meta name="description" content="Encontrá previas cerca de tu ubicación. Filtra por zona, barrio y género musical en Buenos Aires con Previemos.">
+  <meta name="keywords" content="buscar previas, previas hoy, mapa de previas, palermo, recoleta, belgrano, previas cachengue, zona norte, zona oeste, zona sur, previemos">
+  
+  <!-- Carga de Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
+  <!-- Ruta al CSS compilado desde la carpeta pages -->
+  <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-previa fixed-top" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">Previ<span>emos</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarApp" aria-controls="navbarApp" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarApp">
+          <ul class="navbar-nav gap-3 align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link active" href="./buscar-previa.html" aria-current="page">Buscar Previa</a></li>
+            <li class="nav-item"><a class="nav-link" href="./publicar-previa.html">Publicar Previa</a></li>
+            <li class="nav-item"><a class="nav-link" href="./zonas.html">Zonas / Boliches</a></li>
+            <li class="nav-item"><a class="nav-link" href="./contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="contenedor-main mt-5 pt-5">
+    <section class="container py-4" data-aos="fade-down">
+      <h1 class="mb-3">Explorar Previas Disponibles</h1>
+      <p class="text-secondary mb-4">Filtrá las previas activas según tu zona, barrio o estilo de música preferido.</p>
+
+      <!-- Buscador y Filtros por Zona, Barrio y Música -->
+      <form class="form-previa mb-5 row g-3" id="formFiltros">
+        
+        <!-- 1. Filtro de Zonas -->
+        <div class="col-12 col-md-3">
+          <label for="filtroRegion">Zona</label>
+          <select id="filtroRegion" class="form-select">
+            <option value="todos" selected>Todas las zonas</option>
+            <option value="caba">CABA (Capital Federal)</option>
+            <option value="norte">Zona Norte</option>
+            <option value="oeste">Zona Oeste</option>
+            <option value="sur">Zona Sur</option>
+          </select>
+        </div>
+
+        <!-- 2. Filtro de Barrios (Con Vinculación a Zona) -->
+        <div class="col-12 col-md-3">
+          <label for="filtroBarrio">Barrio / Localidad</label>
+          <select id="filtroBarrio" class="form-select">
+            <option value="todos" selected>Todos los barrios</option>
+            
+            <optgroup label="CABA" data-zona="caba">
+              <option value="palermo">Palermo</option>
+              <option value="recoleta">Recoleta</option>
+              <option value="belgrano">Belgrano</option>
+              <option value="santelmo">San Telmo</option>
+              <option value="caballito">Caballito</option>
+              <option value="puertomadero">Puerto Madero</option>
+            </optgroup>
+
+            <optgroup label="Zona Norte" data-zona="norte">
+              <option value="olivos">Olivos</option>
+              <option value="sanisidro">San Isidro</option>
+              <option value="tigre">Tigre</option>
+              <option value="vicentelopez">Vicente López</option>
+              <option value="pilar">Pilar</option>
+            </optgroup>
+
+            <optgroup label="Zona Oeste" data-zona="oeste">
+              <option value="ramosmejia">Ramos Mejía</option>
+              <option value="castelar">Castelar</option>
+              <option value="moron">Morón</option>
+              <option value="ituzaingo">Ituzaingó</option>
+              <option value="merlo">Merlo</option>
+            </optgroup>
+
+            <optgroup label="Zona Sur" data-zona="sur">
+              <option value="quilmes">Quilmes</option>
+              <option value="lomas">Lomas de Zamora</option>
+              <option value="lanus">Lanús</option>
+              <option value="adrogue">Adrogué</option>
+              <option value="avellaneda">Avellaneda</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <!-- 3. Filtro Tipo de Música -->
+        <div class="col-12 col-md-3">
+          <label for="filtroEstilo">Tipo de Música</label>
+          <select id="filtroEstilo" class="form-select">
+            <option value="todos" selected>Todos los estilos</option>
+            <option value="cachengue">Cachengue / Reggaetón</option>
+            <option value="rkt">RKT / Turreo</option>
+            <option value="electronica">Electrónica / Techno</option>
+            <option value="trap">Trap Latino</option>
+            <option value="cumbia">Cumbia / Cuarteto</option>
+          </select>
+        </div>
+
+        <!-- 4. Botón de Acción -->
+        <div class="col-12 col-md-3 d-flex align-items-end">
+          <button type="button" id="btnFiltrar" class="btn-previa-primary w-100">Aplicar Filtros</button>
+        </div>
+      </form>
+
+      <!-- Cartelera de previas -->
+      <div class="row g-4" id="contenedorTarjetas">
+        
+        <!-- CABA -->
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="caba" data-barrio="palermo" data-estilo="cachengue">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">CABA · Palermo</span>
+            <h3 class="titulo-card">Previa Cachengue &amp; Fernet</h3>
+            <p class="text-secondary">Mazo de cartas, patio al aire libre y parlante JBL. Salimos directo para Crobar.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Cachengue & Fernet" data-zona="CABA · Palermo" data-descripcion="Mazo de cartas, patio al aire libre y parlante JBL. Salimos directo para Crobar. Horario de inicio: 23:00 hs. Cupos disponibles: 5.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="caba" data-barrio="recoleta" data-estilo="cachengue">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">CABA · Recoleta</span>
+            <h3 class="titulo-card">Previa Bresh &amp; Reggaetón</h3>
+            <p class="text-secondary">Depto amplio cerca de Av. Santa Fe. Tragos de autor, buena vibra y salida en grupo.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Bresh & Reggaetón" data-zona="CABA · Recoleta" data-descripcion="Depto amplio cerca de Av. Santa Fe. Tragos de autor, buena vibra y salida en grupo. Horario de inicio: 23:30 hs. Cupos disponibles: 3.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="caba" data-barrio="belgrano" data-estilo="rkt">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">CABA · Belgrano</span>
+            <h3 class="titulo-card">Previa Trap &amp; RKT Universitarios</h3>
+            <p class="text-secondary">Nos juntamos post parciales. Pizza, birras frías y previa asegurada para Costanera.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Trap & RKT Universitarios" data-zona="CABA · Belgrano" data-descripcion="Nos juntamos post parciales. Pizza, birras frías y previa asegurada para Costanera. Horario de inicio: 22:30 hs. Cupos disponibles: 6.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="caba" data-barrio="santelmo" data-estilo="electronica">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">CABA · San Telmo</span>
+            <h3 class="titulo-card">Previa Electrónica &amp; Synth</h3>
+            <p class="text-secondary">Terraza habilitada y DJ set en vivo previo a encarar para Under Club.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Electrónica & Synth" data-zona="CABA · San Telmo" data-descripcion="Terraza habilitada y DJ set en vivo previo a encarar para Under Club. Horario de inicio: 00:00 hs. Cupos disponibles: 4.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="caba" data-barrio="caballito" data-estilo="cumbia">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">CABA · Caballito</span>
+            <h3 class="titulo-card">Cumbia &amp; Cuarteto de Barrio</h3>
+            <p class="text-secondary">Sorteo de tragos, consola de videojuegos y los mejores clásicos de la cumbia.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Cumbia & Cuarteto de Barrio" data-zona="CABA · Caballito" data-descripcion="Sorteo de tragos, consola de videojuegos y los mejores clásicos de la cumbia. Horario de inicio: 22:00 hs. Cupos disponibles: 8.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="caba" data-barrio="puertomadero" data-estilo="electronica">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">CABA · Puerto Madero</span>
+            <h3 class="titulo-card">Previa VIP Techno &amp; House</h3>
+            <p class="text-secondary">Sunset en piso alto con vista al río. Tragos premium y pase directo a la fiesta.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa VIP Techno & House" data-zona="CABA · Puerto Madero" data-descripcion="Sunset en piso alto con vista al río. Tragos premium y pase directo a la fiesta. Horario de inicio: 21:30 hs. Cupos disponibles: 2.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <!-- ZONA NORTE -->
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="norte" data-barrio="olivos" data-estilo="cachengue">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Norte · Olivos</span>
+            <h3 class="titulo-card">Previa Costanera Norte</h3>
+            <p class="text-secondary">Casa con parque cerca del río. Cachengue noventoso, Fernet en jarra y salida a Jet.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Costanera Norte" data-zona="Zona Norte · Olivos" data-descripcion="Casa con parque cerca del río. Cachengue noventoso, Fernet en jarra y salida a Jet. Horario: 23:00 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="norte" data-barrio="sanisidro" data-estilo="rkt">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Norte · San Isidro</span>
+            <h3 class="titulo-card">Previa Quinta &amp; Pool Party</h3>
+            <p class="text-secondary">Arrancamos temprano con pileta, luces de colores y sets de RKT y Cachengue.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Quinta & Pool Party" data-zona="Zona Norte · San Isidro" data-descripcion="Arrancamos temprano con pileta, luces de colores y sets de RKT y Cachengue. Horario: 21:00 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="norte" data-barrio="tigre" data-estilo="trap">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Norte · Tigre</span>
+            <h3 class="titulo-card">Previa Nocturna en el Río</h3>
+            <p class="text-secondary">Juntada con música Trap Latino y parrilla previa al boliche.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Nocturna en el Río" data-zona="Zona Norte · Tigre" data-descripcion="Juntada con música Trap Latino y parrilla previa al boliche. Horario: 22:00 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="norte" data-barrio="vicentelopez" data-estilo="electronica">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Norte · Vicente López</span>
+            <h3 class="titulo-card">Previa Electro &amp; Progressive</h3>
+            <p class="text-secondary">Para los amantes de los beats electrónicos. Espacio con luces ambientadas.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Electro & Progressive" data-zona="Zona Norte · Vicente López" data-descripcion="Para los amantes de los beats electrónicos. Espacio con luces ambientadas. Horario: 23:30 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="norte" data-barrio="pilar" data-estilo="cumbia">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Norte · Pilar</span>
+            <h3 class="titulo-card">Previa Cumbia &amp; Asado</h3>
+            <p class="text-secondary">Asado completo entre amigos con playlist imparable de Cuarteto y Cumbia retro.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Cumbia & Asado" data-zona="Zona Norte · Pilar" data-descripcion="Asado completo entre amigos con playlist imparable de Cuarteto y Cumbia retro. Horario: 21:00 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <!-- ZONA OESTE -->
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="oeste" data-barrio="ramosmejia" data-estilo="rkt">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Oeste · Ramos Mejía</span>
+            <h3 class="titulo-card">Previa RKT &amp; Turreo Ramos</h3>
+            <p class="text-secondary">Parlantes a pleno con el mejor Turreo. Nos organizamos para salir en combi a la disco.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa RKT & Turreo Ramos" data-zona="Zona Oeste · Ramos Mejía" data-descripcion="Parlantes a pleno con el mejor Turreo. Nos organizamos para salir en combi a la disco. Horario: 23:00 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="oeste" data-barrio="castelar" data-estilo="cachengue">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Oeste · Castelar</span>
+            <h3 class="titulo-card">Previa Cachengue en la Terraza</h3>
+            <p class="text-secondary">Música comercial, juegos de mesa para previa y barra colaborativa.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Cachengue en la Terraza" data-zona="Zona Oeste · Castelar" data-descripcion="Música comercial, juegos de mesa para previa y barra colaborativa. Horario: 22:30 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="oeste" data-barrio="moron" data-estilo="trap">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Oeste · Morón</span>
+            <h3 class="titulo-card">Previa Trap &amp; Hip Hop</h3>
+            <p class="text-secondary">Graffitis, barra de tragos y beats pesados de trap argentino para calentar motores.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Trap & Hip Hop" data-zona="Zona Oeste · Morón" data-descripcion="Graffitis, barra de tragos y beats pesados de trap argentino para calentar motores. Horario: 23:00 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="oeste" data-barrio="ituzaingo" data-estilo="electronica">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Oeste · Ituzaingó</span>
+            <h3 class="titulo-card">Previa Techno Underground</h3>
+            <p class="text-secondary">Ambiente cerrado con luces de neón y playlist de techno oscuro.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Techno Underground" data-zona="Zona Oeste · Ituzaingó" data-descripcion="Ambiente cerrado con luces de neón y playlist de techno oscuro. Horario: 23:45 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="oeste" data-barrio="merlo" data-estilo="cumbia">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Oeste · Merlo</span>
+            <h3 class="titulo-card">Previa Cumbia Sureña &amp; Cuarteto</h3>
+            <p class="text-secondary">Mucho ritmo tropical, picada completa y el mejor ambiente entre amigos.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Cumbia Sureña & Cuarteto" data-zona="Zona Oeste · Merlo" data-descripcion="Mucho ritmo tropical, picada completa y el mejor ambiente entre amigos. Horario: 22:00 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <!-- ZONA SUR -->
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="sur" data-barrio="quilmes" data-estilo="cachengue">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Sur · Quilmes</span>
+            <h3 class="titulo-card">Previa Cachengue &amp; Ferneteros</h3>
+            <p class="text-secondary">Clásica previa quilmeña. Fernet, cachengue actual y traslado compartido al boliche.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Cachengue & Ferneteros" data-zona="Zona Sur · Quilmes" data-descripcion="Clásica previa quilmeña. Fernet, cachengue actual y traslado compartido al boliche. Horario: 23:00 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="sur" data-barrio="lomas" data-estilo="rkt">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Sur · Lomas de Zamora</span>
+            <h3 class="titulo-card">Previa RKT &amp; Perreo</h3>
+            <p class="text-secondary">Luces audiorítmicas, perreo intenso y tragos en vaso grande.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa RKT & Perreo" data-zona="Zona Sur · Lomas de Zamora" data-descripcion="Luces audiorítmicas, perreo intenso y tragos en vaso grande. Horario: 23:30 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="sur" data-barrio="lanus" data-estilo="trap">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Sur · Lanús</span>
+            <h3 class="titulo-card">Previa Trap Latino &amp; Reggaetón</h3>
+            <p class="text-secondary">Las mejores barras del trap latino sonando en parlantes de alta potencia.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Trap Latino & Reggaetón" data-zona="Zona Sur · Lanús" data-descripcion="Las mejores barras del trap latino sonando en parlantes de alta potencia. Horario: 22:30 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="sur" data-barrio="adrogue" data-estilo="electronica">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Sur · Adrogué</span>
+            <h3 class="titulo-card">Previa Electrónica &amp; Deep House</h3>
+            <p class="text-secondary">Juntada tranqui con cócteles preparados y buena selección de música house.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Electrónica & Deep House" data-zona="Zona Sur · Adrogué" data-descripcion="Juntada tranqui con cócteles preparados y buena selección de música house. Horario: 23:00 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 item-previa" data-zona="sur" data-barrio="avellaneda" data-estilo="cumbia">
+          <article class="tarjeta-previa">
+            <span class="badge-zona">Zona Sur · Avellaneda</span>
+            <h3 class="titulo-card">Previa Cumbia &amp; Cuarteto</h3>
+            <p class="text-secondary">Parrilla, cumbia santafesina y cuarteto cordobés hasta la medianoche.</p>
+            <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="Previa Cumbia & Cuarteto" data-zona="Zona Sur · Avellaneda" data-descripcion="Parrilla, cumbia santafesina y cuarteto cordobés hasta la medianoche. Horario: 21:30 hs.">Ver Detalle &amp; Solicitar</button>
+          </article>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DE DETALLE Y SOLICITUD -->
+  <div class="modal fade" id="modalDetallePrevia" tabindex="-1" aria-labelledby="modalDetalleLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light border-secondary">
+        <div class="modal-header border-bottom border-secondary">
+          <div>
+            <span class="badge bg-danger mb-1" id="modalZonaBadge">Zona</span>
+            <h5 class="modal-title h4" id="modalTituloLabel">Título de la Previa</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-secondary" id="modalDescripcion">Descripción completa...</p>
+          <hr class="border-secondary">
+          
+          <h6 class="fw-bold mb-3 text-warning">Solicitar lugar en esta previa</h6>
+          <form id="formSolicitarLugar">
+            <div class="mb-3">
+              <label for="nombreSolicitante" class="form-label text-light small">Tu nombre completo</label>
+              <input type="text" id="nombreSolicitante" class="form-control bg-secondary text-light border-0" placeholder="Ej: Benjamín" required>
+            </div>
+            <div class="mb-3">
+              <label for="contactoSolicitante" class="form-label text-light small">Tu WhatsApp o Instagram</label>
+              <input type="text" id="contactoSolicitante" class="form-control bg-secondary text-light border-0" placeholder="Ej: @tu_usuario o +54 9..." required>
+            </div>
+            <button type="submit" class="btn-previa-primary w-100 mt-2">Enviar Solicitud al Organizador</button>
+          </form>
+
+          <div id="alertaSolicitud" class="alert alert-success mt-3 d-none" role="alert">
+            ¡Solicitud enviada! El organizador te contactará a la brevedad.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-previa">
+    <div class="container">
+      <p class="m-0">&copy; 2026 Previemos Argentina. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const selectZona = document.getElementById('filtroRegion');
+      const selectBarrio = document.getElementById('filtroBarrio');
+      const selectEstilo = document.getElementById('filtroEstilo');
+      const btnFiltrar = document.getElementById('btnFiltrar');
+      const contenedorTarjetas = document.getElementById('contenedorTarjetas');
+      const optgroupsBarrio = selectBarrio.querySelectorAll('optgroup');
+
+      // Elementos del Modal
+      const modalElement = document.getElementById('modalDetallePrevia');
+      const modalBs = new bootstrap.Modal(modalElement);
+      const modalTitulo = document.getElementById('modalTituloLabel');
+      const modalZonaBadge = document.getElementById('modalZonaBadge');
+      const modalDescripcion = document.getElementById('modalDescripcion');
+      const formSolicitar = document.getElementById('formSolicitarLugar');
+      const alertaSolicitud = document.getElementById('alertaSolicitud');
+
+      // 1. Cargar e inyectar las previas guardadas en localStorage al inicio
+      function cargarPreviasNuevas() {
+        const previasGuardadas = JSON.parse(localStorage.getItem('previasCreadas') || '[]');
+
+        previasGuardadas.forEach(p => {
+          const col = document.createElement('div');
+          col.className = 'col-12 col-md-6 col-lg-4 item-previa';
+          col.setAttribute('data-zona', p.zona);
+          col.setAttribute('data-barrio', p.barrio);
+          col.setAttribute('data-estilo', p.estilo);
+
+          col.innerHTML = `
+            <article class="tarjeta-previa">
+              <span class="badge-zona">${p.barrioTexto}</span>
+              <h3 class="titulo-card">${p.titulo}</h3>
+              <p class="text-secondary">${p.descripcion}</p>
+              <button type="button" class="btn-previa-secondary w-100 mt-3 btn-ver-detalle" data-titulo="${p.titulo}" data-zona="${p.barrioTexto}" data-descripcion="${p.descripcion}">Ver Detalle &amp; Solicitar</button>
+            </article>
+          `;
+
+          contenedorTarjetas.prepend(col);
+        });
+      }
+
+      cargarPreviasNuevas();
+
+      const previas = document.querySelectorAll('.item-previa');
+
+      // 2. Event listener global para capturar clics en "Ver Detalle & Solicitar"
+      document.addEventListener('click', (e) => {
+        if (e.target && e.target.classList.contains('btn-ver-detalle')) {
+          const btn = e.target;
+          modalTitulo.textContent = btn.getAttribute('data-titulo');
+          modalZonaBadge.textContent = btn.getAttribute('data-zona');
+          modalDescripcion.textContent = btn.getAttribute('data-descripcion');
+          
+          alertaSolicitud.classList.add('d-none');
+          formSolicitar.reset();
+          
+          modalBs.show();
+        }
+      });
+
+      // Envío de la solicitud dentro del modal
+      formSolicitar.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alertaSolicitud.classList.remove('d-none');
+        setTimeout(() => {
+          modalBs.hide();
+        }, 1800);
+      });
+
+      // 3. Filtrar los barrios disponibles en el select según la Zona elegida
+      function actualizarBarriosPorZona() {
+        const zonaSeleccionada = selectZona.value;
+        selectBarrio.value = 'todos';
+
+        optgroupsBarrio.forEach(group => {
+          const zonaGroup = group.getAttribute('data-zona');
+
+          if (zonaSeleccionada === 'todos' || zonaSeleccionada === zonaGroup) {
+            group.hidden = false;
+            group.querySelectorAll('option').forEach(opt => opt.disabled = false);
+          } else {
+            group.hidden = true;
+            group.querySelectorAll('option').forEach(opt => opt.disabled = true);
+          }
+        });
+      }
+
+      // 4. Filtrar las tarjetas visibles en pantalla
+      function aplicarFiltros() {
+        const valZona = selectZona.value;
+        const valBarrio = selectBarrio.value;
+        const valEstilo = selectEstilo.value;
+
+        previas.forEach(previa => {
+          const pZona = previa.getAttribute('data-zona');
+          const pBarrio = previa.getAttribute('data-barrio');
+          const pEstilo = previa.getAttribute('data-estilo');
+
+          const coincideZona = (valZona === 'todos' || valZona === pZona);
+          const coincideBarrio = (valBarrio === 'todos' || valBarrio === pBarrio);
+          const coincideEstilo = (valEstilo === 'todos' || valEstilo === pEstilo);
+
+          if (coincideZona && coincideBarrio && coincideEstilo) {
+            previa.style.display = 'block';
+          } else {
+            previa.style.display = 'none';
+          }
+        });
+      }
+
+      // Escuchar eventos de filtros
+      selectZona.addEventListener('change', () => {
+        actualizarBarriosPorZona();
+        aplicarFiltros();
+      });
+
+      selectBarrio.addEventListener('change', aplicarFiltros);
+      selectEstilo.addEventListener('change', aplicarFiltros);
+      btnFiltrar.addEventListener('click', aplicarFiltros);
+    });
+  </script>
+</body>
+</html>

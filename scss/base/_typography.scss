@@ -1,0 +1,16 @@
+@use "variables" as *;
+
+h1, h2, h3, h4, h5, h6, p, span, label, a {
+  color: $color-text !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 700;
+}
+
+.titulo-destacado {
+  background: linear-gradient(135deg, $color-primary, $color-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

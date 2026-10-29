@@ -1,0 +1,188 @@
+html, body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  font-family: "Open Sans", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main {
+  background-color: #000000 !important;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, label, a {
+  color: #ffffff !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+.titulo-destacado {
+  background: linear-gradient(135deg, #ff007a, #00f0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes pulso-neon {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 0, 122, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 0, 122, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 0, 122, 0.4);
+  }
+}
+.animacion-destacada {
+  animation: pulso-neon 3s infinite ease-in-out;
+}
+
+.navbar-previa {
+  background-color: #000000 !important;
+  border-bottom: 1px solid #1f1f24;
+  padding: 1rem 0;
+}
+.navbar-previa .navbar-brand {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+.navbar-previa .navbar-brand span {
+  color: #ff007a;
+}
+.navbar-previa .nav-link {
+  color: #8e8e93;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.navbar-previa .nav-link:hover, .navbar-previa .nav-link.active {
+  color: #ff007a;
+}
+.navbar-previa .navbar-toggler {
+  border-color: #ff007a;
+}
+.navbar-previa .navbar-toggler .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.btn-base, .btn-previa-secondary, .btn-previa-primary {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-previa-primary {
+  background: linear-gradient(135deg, #ff007a, #e0006c);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 0, 122, 0.4);
+}
+.btn-previa-primary:hover {
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(255, 0, 122, 0.4);
+}
+
+.btn-previa-secondary {
+  background: transparent;
+  color: #00f0ff;
+  border: 2px solid #00f0ff;
+}
+.btn-previa-secondary:hover {
+  background: #00f0ff;
+  color: #000000;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
+
+.tarjeta-previa {
+  background-color: #0a0a0c;
+  border: 1px solid #1f1f24;
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: 100%;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.tarjeta-previa:hover {
+  border-color: #ff007a;
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(255, 0, 122, 0.2);
+}
+.tarjeta-previa .badge-zona {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background-color: rgba(255, 0, 122, 0.15);
+  color: #ff007a;
+  margin-bottom: 1rem;
+}
+.tarjeta-previa .titulo-card {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.form-previa {
+  background-color: #0a0a0c;
+  border: 1px solid #1f1f24;
+  border-radius: 12px;
+  padding: 2rem;
+}
+.form-previa .form-select, .form-previa .form-control {
+  background-color: #121214;
+  border: 1px solid #1f1f24;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+}
+.form-previa .form-select:focus, .form-previa .form-control:focus {
+  background-color: #1a1a1e;
+  color: #ffffff;
+  border-color: #ff007a;
+  box-shadow: 0 0 12px rgba(255, 0, 122, 0.4);
+}
+.form-previa .form-select optgroup, .form-previa .form-control optgroup {
+  background-color: #121214;
+  color: #ff007a;
+  font-weight: 700;
+}
+.form-previa .form-select option, .form-previa .form-control option {
+  background-color: #121214;
+  color: #ffffff;
+}
+.form-previa label {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.contenedor-main {
+  flex: 1;
+  padding: 2.5rem 0;
+}
+
+.footer-previa {
+  background-color: #000000;
+  border-top: 1px solid #1f1f24;
+  padding: 2rem 0;
+  margin-top: auto;
+  text-align: center;
+  color: #8e8e93;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,15 @@
+@use "variables" as *;
+
+html, body {
+  background-color: $color-bg-dark !important;
+  color: $color-text !important;
+  font-family: $font-main;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+main {
+  background-color: $color-bg-dark !important;
+}

@@ -1,0 +1,39 @@
+@use "../base/variables" as *;
+
+.form-previa {
+  background-color: $color-card-bg;
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  padding: 2rem;
+
+  .form-select, .form-control {
+    background-color: #121214;
+    border: 1px solid $color-border;
+    color: $color-text;
+    padding: 0.75rem 1rem;
+
+    &:focus {
+      background-color: #1a1a1e;
+      color: $color-text;
+      border-color: $color-primary;
+      box-shadow: 0 0 12px rgba($color-primary, 0.4);
+    }
+
+    optgroup {
+      background-color: #121214;
+      color: $color-primary;
+      font-weight: 700;
+    }
+
+    option {
+      background-color: #121214;
+      color: $color-text;
+    }
+  }
+
+  label {
+    color: $color-text;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+}

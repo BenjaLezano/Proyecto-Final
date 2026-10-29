@@ -1,0 +1,16 @@
+@use "../base/variables" as *;
+
+
+@mixin responder-a($breakpoint) {
+  @if $breakpoint == mobile-sm {
+    @media (max-width: 576px) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1024px) { @content; }
+  }
+}
+
+@mixin efecto-glow($color: $color-primary, $intensidad: 15px) {
+  box-shadow: 0 0 $intensidad rgba($color, 0.4);
+}

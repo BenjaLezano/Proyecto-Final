@@ -1,0 +1,36 @@
+@use "../base/variables" as *;
+
+.navbar-previa {
+  background-color: #000000 !important;
+  border-bottom: 1px solid $color-border;
+  padding: 1rem 0;
+
+  .navbar-brand {
+    font-family: $font-heading;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: $color-text;
+
+    span {
+      color: $color-primary;
+    }
+  }
+
+  .nav-link {
+    color: $color-text-muted;
+    font-weight: 600;
+    transition: $transition-fast;
+
+    &:hover, &.active {
+      color: $color-primary;
+    }
+  }
+
+  .navbar-toggler {
+    border-color: $color-primary;
+    
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+  }
+}

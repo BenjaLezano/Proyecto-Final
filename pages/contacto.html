@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto y Soporte | PreviaZone Argentina</title>
+  <meta name="description" content="¿Tenés dudas o consultas sobre la plataforma? Escribinos al equipo de soporte de PreviaZone.">
+  <meta name="keywords" content="contacto previazone, soporte previas, consultas eventos, ayuda previas">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-previa fixed-top" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">Previemos<span></span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarApp" aria-controls="navbarApp" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarApp">
+          <ul class="navbar-nav gap-3 align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="./buscar-previa.html">Buscar Previa</a></li>
+            <li class="nav-item"><a class="nav-link" href="./publicar-previa.html">Publicar Previa</a></li>
+            <li class="nav-item"><a class="nav-link" href="./zonas.html">Zonas / Boliches</a></li>
+            <li class="nav-item"><a class="nav-link active" href="./contacto.html" aria-current="page">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="contenedor-main mt-5 pt-5">
+    <section class="container py-4" data-aos="fade-up">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+          <h1 class="mb-3">Contacto &amp; Soporte</h1>
+          <p class="text-secondary mb-4">¿Querés aliar tu boliche/marca con nosotros o tuviste algún inconveniente? Dejanos tu mensaje.</p>
+
+          <form class="form-previa row g-3">
+            <div class="col-12">
+              <label for="nombreContacto">Nombre completo</label>
+              <input type="text" id="nombreContacto" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <label for="emailContacto">Correo electrónico</label>
+              <input type="email" id="emailContacto" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <label for="mensajeContacto">Mensaje o Consulta</label>
+              <textarea id="mensajeContacto" rows="5" class="form-control" required></textarea>
+            </div>
+            <div class="col-12 mt-4">
+              <button type="submit" class="btn-previa-primary w-100">Enviar Mensaje</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-previa">
+    <div class="container">
+      <p class="m-0">&copy; 2026 Previemos. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, once: true });</script>
+</body>
+</html>
